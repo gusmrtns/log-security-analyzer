@@ -2,7 +2,10 @@
 
 Ferramenta CLI em Python para análise automatizada de logs de segurança. Identifica padrões suspeitos — força bruta, enumeração de usuários, acessos fora de horário, varredura de endpoints sensíveis e criação de contas suspeitas — em logs de SSH, Apache e Windows Event Log, gerando relatórios em terminal, JSON e HTML.
 
-Projeto desenvolvido como parte da minha trilha de portfólio em Segurança Defensiva (Blue Team), na sequência do [Wazuh SIEM Home Lab](https://github.com/gusmrtns/wazuh-home-lab).
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![Pytest](https://img.shields.io/badge/Tests-17%20passing-brightgreen)
+![MITRE](https://img.shields.io/badge/MITRE-ATT%26CK-e11d48)
+![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen)
 
 ## Por que este projeto
 
@@ -57,16 +60,16 @@ log-security-analyzer/
 
 ## Detecções implementadas
 
-| Detecção | Técnica MITRE ATT&CK | Severidade | Lógica |
-|---|---|---|---|
-| Força bruta | T1110 | Alta | ≥5 falhas de login do mesmo IP em janela de 5 minutos |
-| Enumeração de usuários | T1087 | Alta | Mesmo IP tentando ≥4 usernames distintos |
-| Varredura de endpoints sensíveis | T1595.002 | Alta | Mesmo IP batendo em ≥3 caminhos sensíveis conhecidos (`/admin`, `/.env`, etc.) |
-| Varredura genérica (volume) | T1595 | Média | ≥10 erros HTTP do mesmo IP em janela de 5 minutos |
-| Criação de conta suspeita | T1136.001 | Alta | Nome de usuário suspeito e/ou origem de IP externo (fora de RFC1918) |
-| Criação de conta padrão | T1136.001 | Média | Conta criada a partir de IP interno, sem padrão suspeito no nome |
-| Login fora de horário | — | Média | Login bem-sucedido fora de 7h–20h |
-| Top IPs por volume | — | Baixa | IPs com maior volume de eventos (contexto, não é detecção isolada) |
+| Detecção                         | Técnica MITRE ATT&CK | Severidade | Lógica                                                                         |
+| -------------------------------- | -------------------- | ---------- | ------------------------------------------------------------------------------ |
+| Força bruta                      | T1110                | Alta       | ≥5 falhas de login do mesmo IP em janela de 5 minutos                          |
+| Enumeração de usuários           | T1087                | Alta       | Mesmo IP tentando ≥4 usernames distintos                                       |
+| Varredura de endpoints sensíveis | T1595.002            | Alta       | Mesmo IP batendo em ≥3 caminhos sensíveis conhecidos (`/admin`, `/.env`, etc.) |
+| Varredura genérica (volume)      | T1595                | Média      | ≥10 erros HTTP do mesmo IP em janela de 5 minutos                              |
+| Criação de conta suspeita        | T1136.001            | Alta       | Nome de usuário suspeito e/ou origem de IP externo (fora de RFC1918)           |
+| Criação de conta padrão          | T1136.001            | Média      | Conta criada a partir de IP interno, sem padrão suspeito no nome               |
+| Login fora de horário            | —                    | Média      | Login bem-sucedido fora de 7h–20h                                              |
+| Top IPs por volume               | —                    | Baixa      | IPs com maior volume de eventos (contexto, não é detecção isolada)             |
 
 ## Formatos de log suportados
 
